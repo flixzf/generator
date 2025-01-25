@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Card } from '@/components/ui/card';
 
 const OrganizationTree = () => {
   const [config, setConfig] = useState({
@@ -166,7 +165,7 @@ const OrganizationTree = () => {
   };
 
   return (
-    <Card className="p-8 w-full">
+    <div className="p-8 w-full border rounded-lg shadow-sm">
       <div className="overflow-auto">
         <div className="flex flex-col items-center">
           <PositionBox title="MGL" subtitle="Plant A" count={1} level={0} />
@@ -225,7 +224,7 @@ const OrganizationTree = () => {
           </div>
         </div>
       </div>
-    </Card>
+    </div>
   );
 };
 
