@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/generator/static/js/main.dd39f218.js",
+    "index.html": "/generator/index.html",
+    "main.dd39f218.js.map": "/generator/static/js/main.dd39f218.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.dd39f218.js"
+  ]
+}
