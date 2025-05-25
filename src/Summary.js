@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Summary = ({ totals }) => {
+
   const totalSum = Object.values(totals).reduce((acc, v) => acc + v, 0);
   return (
     <div className="fixed top-0 left-0 right-0 bg-white p-8 shadow z-10">
@@ -11,6 +12,7 @@ const Summary = ({ totals }) => {
         <li>조직도 3: {totals.chart3}</li>
       </ul>
       <div className="text-lg font-bold">합계: {totalSum}</div>
+
     </div>
   );
 };
