@@ -119,33 +119,19 @@ const OrganizationTree = ({ onTotalChange }) => {
   ];
 
 
-  const computePositionTotals = () => {
+  const computeTotalPositions = () => {
     const processGroups = getProcessGroups();
-    const glPerLine = processGroups.length;
-    const tlPerLine = processGroups.reduce((sum, g) => sum + g.tlGroup.length, 0);
-    const tmPerLine = processGroups.reduce(
-      (sum, g) => sum + (g.tmGroup ? g.tmGroup.length : 0),
-      0
-    );
-
-    const totals = {
-      mgl: 1,
-      vsm: config.lineCount,
-      gl: config.lineCount * glPerLine,
-      tl: config.lineCount * tlPerLine,
-      tm: config.lineCount * tmPerLine
-    };
-    totals.total =
-      totals.mgl + totals.vsm + totals.gl + totals.tl + totals.tm;
-
-    return totals;
+    const perLine = 1 + processGroups.reduce((sum, group) => {
+      return sum + 1 + group.tlGroup.length + (group.tmGroup ? group.tmGroup.length : 0);
+    }, 0);
+    return 1 + config.lineCount * perLine;
 
   };
 
   useEffect(() => {
     if (onTotalChange) {
 
-      onTotalChange(computePositionTotals());
+      onTotalChange(computeTotalPositions());
 
     }
   }, [config]);
