@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
 import OrganizationTree from './generator';
 import Summary from './Summary';
@@ -18,6 +19,7 @@ const App = () => {
         <Link to="/chart2">조직도 2</Link>
         <Link to="/chart3">조직도 3</Link>
         <Link to="/summary">합계</Link>
+
       </nav>
       <Routes>
         <Route path="/" element={<Navigate to="/chart1" replace />} />

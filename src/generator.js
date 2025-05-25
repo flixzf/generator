@@ -118,6 +118,7 @@ const OrganizationTree = ({ onTotalChange }) => {
     }
   ];
 
+
   const computePositionTotals = () => {
     const processGroups = getProcessGroups();
     const glPerLine = processGroups.length;
@@ -138,11 +139,14 @@ const OrganizationTree = ({ onTotalChange }) => {
       totals.mgl + totals.vsm + totals.gl + totals.tl + totals.tm;
 
     return totals;
+
   };
 
   useEffect(() => {
     if (onTotalChange) {
+
       onTotalChange(computePositionTotals());
+
     }
   }, [config]);
 

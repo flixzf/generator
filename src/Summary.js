@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Summary = ({ totals }) => {
+
   const charts = Object.values(totals);
   const totalSum = charts.reduce((acc, v) => acc + (v.total || 0), 0);
 
@@ -16,10 +17,14 @@ const Summary = ({ totals }) => {
     { mgl: 0, vsm: 0, gl: 0, tl: 0, tm: 0 }
   );
 
+
+  const totalSum = Object.values(totals).reduce((acc, v) => acc + v, 0);
+
   return (
     <div className="p-8">
       <h1 className="text-xl font-bold mb-4">총 인원 합계</h1>
       <ul className="mb-4 space-y-2">
+
         <li>조직도 1: {totals.chart1.total}</li>
         <li>조직도 2: {totals.chart2.total}</li>
         <li>조직도 3: {totals.chart3.total}</li>
@@ -34,6 +39,7 @@ const Summary = ({ totals }) => {
         <li>TL: {rankTotals.tl}</li>
         <li>TM: {rankTotals.tm}</li>
       </ul>
+
     </div>
   );
 };
