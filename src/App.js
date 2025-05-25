@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import OrganizationTree from './generator';
 import Summary from './Summary';
@@ -30,8 +31,10 @@ const App = () => {
 
   return (
     <Router basename={process.env.PUBLIC_URL}>
+
       <nav className="p-4 border-b mb-4">
         <NavigationDropdown />
+
       </nav>
       <Routes>
         <Route path="/" element={<Navigate to="/chart1" replace />} />
