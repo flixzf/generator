@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const OrganizationTree = () => {
+const OrganizationTree = ({ onTotalChange }) => {
   const [config, setConfig] = useState({
     lineCount: 4,
     shiftsCount: 2,
@@ -117,6 +117,34 @@ const OrganizationTree = () => {
       ]
     }
   ];
+
+  const computePositionTotals = () => {
+    const processGroups = getProcessGroups();
+    const glPerLine = processGroups.length;
+    const tlPerLine = processGroups.reduce((sum, g) => sum + g.tlGroup.length, 0);
+    const tmPerLine = processGroups.reduce(
+      (sum, g) => sum + (g.tmGroup ? g.tmGroup.length : 0),
+      0
+    );
+
+    const totals = {
+      mgl: 1,
+      vsm: config.lineCount,
+      gl: config.lineCount * glPerLine,
+      tl: config.lineCount * tlPerLine,
+      tm: config.lineCount * tmPerLine
+    };
+    totals.total =
+      totals.mgl + totals.vsm + totals.gl + totals.tl + totals.tm;
+
+    return totals;
+  };
+
+  useEffect(() => {
+    if (onTotalChange) {
+      onTotalChange(computePositionTotals());
+    }
+  }, [config]);
 
   const VSMGroup = ({ vsm }) => {
     const processGroups = getProcessGroups();
